@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
+import LineChart from "./LineChart";
+import BarChart from "./BarChart";
 
 function App() {
   const [dataSet, setData] = useState([]);
@@ -14,7 +16,8 @@ function App() {
     setData(response.data.data);
   };
 
-  return <div className="App">{dataSet.map((data) => data.sector)}</div>;
+  //return <LineChart Data={dataSet} />;
+  return <BarChart />;
 }
 
 export default App;
