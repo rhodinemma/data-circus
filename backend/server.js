@@ -19,8 +19,8 @@ mongoose
   .then(() => console.log("Database connected"));
 
 app.get("/getAllData", async (req, res) => {
-  let limit = 5;
-  let response = await Data.find().limit(limit);
+  //let limit = 5;
+  let response = await Data.find();
   res.json({ data: response, status: "success" });
 });
 
