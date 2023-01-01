@@ -2,7 +2,6 @@ const fs = require("fs");
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
 const Data = require("./model/data");
 
 const app = express();
@@ -10,22 +9,22 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+mongoose.set("strictQuery", true);
+
 // connect to mongodb
 mongoose
   .connect(
     "mongodb+srv://rhodzeey:12345@cluster0.tpb0e.mongodb.net/assignment?retryWrites=true&w=majority"
   )
-  .then(() => console.log("db connected"));
+  .then(() => console.log("Database connected"));
 
-app.get("/", (req, res) => {
-  res.send({
-    title: "hello world",
-  });
+app.get("/getAllData", async (req, res) => {
+  let limit = 5;
+  let response = await Data.find().limit(limit);
+  res.json({ data: response, status: "success" });
 });
 
 const data = JSON.parse(fs.readFileSync("./jsondata.json", "utf-8"));
-
-console.log(data);
 
 // import data to MongoDB
 const importData = async () => {
@@ -39,7 +38,7 @@ const importData = async () => {
   }
 };
 
-importData();
+// importData();
 
 const PORT = process.env.PORT || 5000;
 
