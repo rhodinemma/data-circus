@@ -1,7 +1,39 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
-import Chart from "./Chart";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  RadialLinearScale,
+  Title,
+  Tooltip,
+  Filler,
+  Legend,
+  ArcElement,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
+import { Radar } from "react-chartjs-2";
+import { Scatter } from "react-chartjs-2";
+import faker from "faker";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  RadialLinearScale,
+  ArcElement,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Filler,
+  Legend
+);
 
 function App() {
   // hook to save our data in state from database
@@ -136,7 +168,7 @@ function App() {
   console.log(pestle);
   console.log(country);
 
-  console.log("************");
+  console.log("*****************************");
 
   console.log(intensity);
   console.log(relevance);
@@ -144,7 +176,117 @@ function App() {
 
   console.log(topicFilter);
 
-  return <Chart />;
+  console.log("******LINE CHART*************");
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "top",
+      },
+      title: {
+        display: true,
+        text: "Chart.js Line Chart",
+      },
+    },
+  };
+
+  const labels = pestle;
+
+  const data = {
+    labels,
+    datasets: [
+      {
+        fill: true,
+        label: "Dataset 2",
+        data: intensity,
+        borderColor: "rgb(53, 162, 235)",
+        backgroundColor: "rgba(53, 162, 235, 0.5)",
+      },
+    ],
+  };
+
+  console.log("*******PIE CHART********");
+
+  const pieData = {
+    labels: country,
+    datasets: [
+      {
+        label: "# of Votes",
+        data: relevance,
+        backgroundColor: [
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(255, 206, 86, 0.2)",
+          "rgba(75, 192, 192, 0.2)",
+          "rgba(153, 102, 255, 0.2)",
+          "rgba(255, 159, 64, 0.2)",
+        ],
+        borderColor: [
+          "rgba(255, 99, 132, 1)",
+          "rgba(54, 162, 235, 1)",
+          "rgba(255, 206, 86, 1)",
+          "rgba(75, 192, 192, 1)",
+          "rgba(153, 102, 255, 1)",
+          "rgba(255, 159, 64, 1)",
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  console.log("*******RADAR CHART*********");
+
+  const radarData = {
+    labels: topic,
+    datasets: [
+      {
+        label: "Topics",
+        data: intensity,
+        backgroundColor: "rgba(255, 99, 132, 0.2)",
+        borderColor: "rgba(255, 99, 132, 1)",
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  console.log("*******SCATTER CHART*******");
+
+  const scatterOptions = {
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+  };
+
+  const scatterData = {
+    datasets: [
+      {
+        label: "A dataset",
+        data: Array.from({ length: 100 }, () => ({
+          x: faker.datatype.number({ min: -100, max: 100 }),
+          y: faker.datatype.number({ min: -100, max: 100 }),
+        })),
+        backgroundColor: "rgba(255, 99, 132, 1)",
+      },
+    ],
+  };
+
+  return (
+    <>
+      <Line options={options} data={data} />
+      <br />
+      <br />
+      <Pie data={pieData} />
+      <br />
+      <br />
+      <Radar data={radarData} />
+      <br />
+      <br />
+      <Scatter options={scatterOptions} data={scatterData} />
+    </>
+  );
 }
 
 export default App;
