@@ -19,6 +19,7 @@ import ScatterChart from "./components/ScatterChart/ScatterChart";
 import RadarChart from "./components/RadarChart/RadarChart";
 import PieChart from "./components/PieChart/PieChart";
 import LineChart from "./components/LineChart/LineChart";
+import DonutChart from "./components/DonutChart/DonutChart";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -181,6 +182,14 @@ function App() {
       <br />
       <br />
       <RadarChart topic={topic} intensity={intensity} />
+      <br />
+      <br />
+      <DonutChart
+        topic={topic}
+        relevance={relevance}
+        intensity={intensity}
+        likelihood={likelihood}
+      />
       <br />
       <br />
       <ScatterChart
