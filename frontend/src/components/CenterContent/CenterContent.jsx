@@ -190,7 +190,12 @@ function App() {
 
             <div className="row mb-5">
               <div className="col-lg-12">
-                <LineChart pestle={pestle} intensity={intensity} />
+                <LineChart
+                  pestle={pestle}
+                  intensity={intensity}
+                  relevance={relevance}
+                  likelihood={likelihood}
+                />
               </div>
             </div>
 

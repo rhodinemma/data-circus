@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Line } from "react-chartjs-2";
 
 const LineChart = (props) => {
-  const { pestle, intensity } = props;
+  const [filter, setFilter] = useState("");
+  const { pestle, intensity, relevance, likelihood } = props;
   const options = {
     responsive: true,
     plugins: {
@@ -24,7 +25,12 @@ const LineChart = (props) => {
       {
         fill: true,
         label: "Dataset 2",
-        data: intensity,
+        data:
+          filter === "intensity"
+            ? intensity
+            : filter === "relevance"
+            ? relevance
+            : likelihood,
         borderColor: "rgb(53, 162, 235)",
         backgroundColor: "rgba(53, 162, 235, 0.5)",
       },
@@ -36,11 +42,14 @@ const LineChart = (props) => {
         <div className="row mb-2">
           <div className="d-flex justify-content-between">
             <h1>Statistics</h1>
-            <select className="btn btn-outline-dark">
-              <option value="">Default</option>
-              <option value="">Intensity</option>
-              <option value="">Relevance</option>
-              <option value="">Likelihood</option>
+            <select
+              className="btn btn-outline-dark"
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
+            >
+              <option value="intensity">Intensity</option>
+              <option value="relevance">Relevance</option>
+              <option value="likelihood">Likelihood</option>
             </select>
           </div>
         </div>
