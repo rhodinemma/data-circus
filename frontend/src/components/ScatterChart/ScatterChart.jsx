@@ -27,7 +27,19 @@ const ScatterChart = ({ relevance, intensity, likelihood }) => {
       },
     ],
   };
-  return <Scatter options={scatterOptions} data={scatterData} />;
+  return (
+    <>
+      {" "}
+      <div className="col card p-3 border border-5">
+        <div className="row">
+          <h1>Scatter Chart</h1>
+        </div>
+        <div className="row">
+          <Scatter options={scatterOptions} data={scatterData} />
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default ScatterChart;

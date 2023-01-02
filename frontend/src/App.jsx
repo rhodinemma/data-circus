@@ -214,13 +214,15 @@ function App() {
           </div>
         </div>
 
-        <br />
-        <br />
-        <ScatterChart
-          relevance={relevance}
-          intensity={intensity}
-          likelihood={likelihood}
-        />
+        <div className="row mb-5">
+          <div className="col-lg-12">
+            <ScatterChart
+              relevance={relevance}
+              intensity={intensity}
+              likelihood={likelihood}
+            />
+          </div>
+        </div>
       </div>
     </>
   );
