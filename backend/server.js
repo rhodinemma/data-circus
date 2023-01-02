@@ -19,7 +19,7 @@ mongoose
   .then(() => console.log("Database connected"));
 
 app.get("/getAllData", async (req, res) => {
-  let limit = 50;
+  let limit = 100;
   let response = await Data.find().limit(limit);
   res.json({ data: response, status: "success" });
 });

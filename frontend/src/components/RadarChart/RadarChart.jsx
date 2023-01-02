@@ -3,6 +3,18 @@ import { Radar } from "react-chartjs-2";
 
 const RadarChart = (props) => {
   const { topic, intensity } = props;
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "bottom",
+      },
+      title: {
+        display: false,
+        text: "Chart.js Line Chart",
+      },
+    },
+  };
   const radarData = {
     labels: topic,
     datasets: [
@@ -21,8 +33,8 @@ const RadarChart = (props) => {
         <div className="row">
           <h1>Radar Chart</h1>
         </div>
-        <div className="col-lg-6">
-          <Radar data={radarData} />
+        <div>
+          <Radar data={radarData} options={options} />
         </div>
       </div>
     </>

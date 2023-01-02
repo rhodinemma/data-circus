@@ -3,6 +3,18 @@ import { Pie } from "react-chartjs-2";
 
 const PieChart = (props) => {
   const { country, relevance } = props;
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "right",
+      },
+      title: {
+        display: false,
+        text: "Chart.js Line Chart",
+      },
+    },
+  };
   const pieData = {
     labels: country,
     datasets: [
@@ -35,8 +47,8 @@ const PieChart = (props) => {
         <div className="row">
           <h1>Pie Chart</h1>
         </div>
-        <div className="col-lg-6">
-          <Pie data={pieData} />
+        <div>
+          <Pie data={pieData} options={options} />
         </div>
       </div>
     </>
