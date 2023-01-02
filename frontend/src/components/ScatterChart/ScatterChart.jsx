@@ -1,7 +1,6 @@
-import faker from "faker";
 import { Scatter } from "react-chartjs-2";
 
-const ScatterChart = () => {
+const ScatterChart = ({ relevance, intensity, likelihood }) => {
   const scatterOptions = {
     scales: {
       y: {
@@ -14,10 +13,16 @@ const ScatterChart = () => {
     datasets: [
       {
         label: "A dataset",
-        data: Array.from({ length: 100 }, () => ({
-          x: faker.datatype.number({ min: -100, max: 100 }),
-          y: faker.datatype.number({ min: -100, max: 100 }),
-        })),
+        data: {
+          x: {
+            min: Math.min(...intensity),
+            max: Math.max(...relevance),
+          },
+          y: {
+            min: Math.min(...intensity),
+            max: Math.max(...relevance),
+          },
+        },
         backgroundColor: "rgba(255, 99, 132, 1)",
       },
     ],

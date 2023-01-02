@@ -162,7 +162,7 @@ function App() {
 
   filterOnTopics();
 
-  // console.log(topic);
+  //console.log(topic);
   // console.log(sector);
   // console.log(region);
   // console.log(pestle);
@@ -183,7 +183,11 @@ function App() {
       <RadarChart topic={topic} intensity={intensity} />
       <br />
       <br />
-      <ScatterChart />
+      <ScatterChart
+        relevance={relevance}
+        intensity={intensity}
+        likelihood={likelihood}
+      />
       <br />
       <br />
       <BubbleChart />
