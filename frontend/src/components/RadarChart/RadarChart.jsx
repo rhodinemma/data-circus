@@ -38,7 +38,7 @@ const RadarChart = (props) => {
       <div className="col card p-3 border border-5">
         <div className="row mb-2">
           <div className="d-flex justify-content-between">
-            <h1>
+            <h1 style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
               {filter === "intensity"
                 ? "Topics[intensity]"
                 : filter === "relevance"

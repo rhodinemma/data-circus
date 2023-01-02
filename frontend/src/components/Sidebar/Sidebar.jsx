@@ -11,7 +11,12 @@ const Sidebar = () => {
               href="/"
               className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"
             >
-              <span className="fs-5 d-none d-sm-inline mt-3">Home</span>
+              <span
+                className="fs-5 d-none d-sm-inline mt-3"
+                style={{ fontSize: "1.5rem", fontWeight: "bold" }}
+              >
+                Home
+              </span>
             </a>
             <ul
               className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
@@ -20,7 +25,7 @@ const Sidebar = () => {
               <li className="nav-item">
                 <a href="#" className="nav-link align-middle px-0">
                   <i className="fs-4 bi-house"></i>{" "}
-                  <span className="ms-1 d-none d-sm-inline">
+                  <span className="ms-1 d-none d-sm-inline text-white">
                     Dashboard Overview
                   </span>
                 </a>
@@ -32,8 +37,11 @@ const Sidebar = () => {
                   className="nav-link px-0 align-middle"
                 >
                   <i className="fs-4 bi-speedometer2"></i>{" "}
-                  <span className="ms-1 d-none d-sm-inline text-white">
-                    Charts Summary
+                  <span
+                    className="ms-1 d-none d-sm-inline text-white"
+                    style={{ fontSize: "1.5rem", fontWeight: "bold" }}
+                  >
+                    Summary
                   </span>{" "}
                 </a>
                 <ul
@@ -44,31 +52,41 @@ const Sidebar = () => {
                   <li>
                     <a href="#" className="nav-link px-0">
                       {" "}
-                      <span className="d-none d-sm-inline">Statistics</span>
+                      <span className="d-none d-sm-inline text-white">
+                        Statistics
+                      </span>
                     </a>
                   </li>
                   <li className="w-100">
                     <a href="#" className="nav-link px-0">
                       {" "}
-                      <span className="d-none d-sm-inline">Countries</span>
+                      <span className="d-none d-sm-inline text-white">
+                        Countries
+                      </span>
                     </a>
                   </li>
                   <li>
                     <a href="#" className="nav-link px-0">
                       {" "}
-                      <span className="d-none d-sm-inline">Topics</span>
+                      <span className="d-none d-sm-inline text-white">
+                        Topics
+                      </span>
                     </a>
                   </li>
                   <li>
                     <a href="#" className="nav-link px-0">
                       {" "}
-                      <span className="d-none d-sm-inline">Sectors</span>
+                      <span className="d-none d-sm-inline text-white">
+                        Sectors
+                      </span>
                     </a>
                   </li>
                   <li>
                     <a href="#" className="nav-link px-0">
                       {" "}
-                      <span className="d-none d-sm-inline">Regions</span>
+                      <span className="d-none d-sm-inline text-white">
+                        Regions
+                      </span>
                     </a>
                   </li>
                 </ul>

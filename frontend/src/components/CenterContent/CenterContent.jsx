@@ -7,6 +7,7 @@ import {
   LinearScale,
   PointElement,
   LineElement,
+  BarElement,
   RadialLinearScale,
   Title,
   Tooltip,
@@ -14,14 +15,13 @@ import {
   Legend,
   ArcElement,
 } from "chart.js";
-import BubbleChart from "./../BubbleChart/BubbleChart";
-import ScatterChart from "./../ScatterChart/ScatterChart";
 import RadarChart from "./../RadarChart/RadarChart";
 import PieChart from "./../PieChart/PieChart";
 import LineChart from "./../LineChart/LineChart";
 import DonutChart from "./../DonutChart/DonutChart";
 import PolarChart from "./../PolarChart/PolarChart";
 import Cards from "./../Cards/Cards";
+import BarChart from "../BarChart/BarChart";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -32,6 +32,7 @@ ChartJS.register(
   ArcElement,
   PointElement,
   LineElement,
+  BarElement,
   Title,
   Tooltip,
   Filler,
@@ -221,7 +222,12 @@ function App() {
 
             <div className="row mb-5">
               <div className="col-lg-12">
-                <BubbleChart />
+                <BarChart
+                  region={region}
+                  intensity={intensity}
+                  relevance={relevance}
+                  likelihood={likelihood}
+                />
               </div>
             </div>
 
@@ -238,16 +244,6 @@ function App() {
                   region={region}
                   intensity={intensity}
                   relevance={relevance}
-                  likelihood={likelihood}
-                />
-              </div>
-            </div>
-
-            <div className="row mb-5">
-              <div className="col-lg-12">
-                <ScatterChart
-                  relevance={relevance}
-                  intensity={intensity}
                   likelihood={likelihood}
                 />
               </div>

@@ -1,41 +1,51 @@
 import React, { useState } from "react";
-import { Line } from "react-chartjs-2";
-
-const LineChart = (props) => {
+import { Bar } from "react-chartjs-2";
+import faker from "faker";
+const BarChart = ({ intensity, relevance, region, likelihood }) => {
   const [filter, setFilter] = useState("");
-  const { pestle, intensity, relevance, likelihood } = props;
+  const [secondFilter, setSecondFilter] = useState("");
   const options = {
     responsive: true,
     plugins: {
       legend: {
+        display: false,
         position: "bottom",
       },
       title: {
         display: false,
-        text: "Chart.js Line Chart",
+        text: "Chart.js Bar Chart",
       },
     },
   };
 
-  const labels = pestle;
+  const labels = region;
 
   const data = {
     labels,
     datasets: [
       {
-        fill: true,
-        label: "Dataset 2",
+        label: "Dataset 1",
         data:
           filter === "intensity"
             ? intensity
             : filter === "relevance"
             ? relevance
             : likelihood,
-        borderColor: "rgb(53, 162, 235)",
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+      },
+      {
+        label: "Dataset 2",
+        data:
+          secondFilter === "intensity"
+            ? intensity
+            : secondFilter === "relevance"
+            ? relevance
+            : likelihood,
         backgroundColor: "rgba(53, 162, 235, 0.5)",
       },
     ],
   };
+
   return (
     <>
       <div className="col card p-3 border border-5">
@@ -43,13 +53,22 @@ const LineChart = (props) => {
           <div className="d-flex justify-content-between">
             <h1 style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
               {filter === "intensity"
-                ? "Statistics with intensity"
+                ? "Region with intensity"
                 : filter === "relevance"
-                ? "Statistics with relevance"
+                ? "Region with relevance"
                 : filter === "likelihood"
-                ? "Statistics with likelihood"
-                : "Statistics"}
+                ? "Region with likelihood"
+                : "Region"}
             </h1>
+            <select
+              className="btn btn-outline-dark"
+              value={secondFilter}
+              onChange={(e) => setSecondFilter(e.target.value)}
+            >
+              <option value="intensity">Intensity</option>
+              <option value="relevance">Relevance</option>
+              <option value="likelihood">Likelihood</option>
+            </select>
             <select
               className="btn btn-outline-dark"
               value={filter}
@@ -62,11 +81,11 @@ const LineChart = (props) => {
           </div>
         </div>
         <div className="row">
-          <Line options={options} data={data} />
+          <Bar options={options} data={data} />
         </div>
       </div>
     </>
   );
 };
 
-export default LineChart;
+export default BarChart;
