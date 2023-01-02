@@ -15,7 +15,7 @@ const Sidebar = () => {
                 className="fs-5 d-none d-sm-inline mt-3"
                 style={{ fontSize: "1.5rem", fontWeight: "bold" }}
               >
-                Home
+                <i class="fas fa-home"></i> Home
               </span>
             </a>
             <ul
@@ -26,7 +26,7 @@ const Sidebar = () => {
                 <a href="#" className="nav-link align-middle px-0">
                   <i className="fs-4 bi-house"></i>{" "}
                   <span className="ms-1 d-none d-sm-inline text-white">
-                    Dashboard Overview
+                    <i class="fas fa-layer-group"></i> &nbsp;Dashboard
                   </span>
                 </a>
               </li>
@@ -53,7 +53,7 @@ const Sidebar = () => {
                     <a href="#" className="nav-link px-0">
                       {" "}
                       <span className="d-none d-sm-inline text-white">
-                        Statistics
+                        <i class="fas fa-chart-line"></i> &nbsp;Statistics
                       </span>
                     </a>
                   </li>
@@ -61,7 +61,7 @@ const Sidebar = () => {
                     <a href="#" className="nav-link px-0">
                       {" "}
                       <span className="d-none d-sm-inline text-white">
-                        Countries
+                        <i class="fas fa-map"></i> &nbsp;Countries
                       </span>
                     </a>
                   </li>
@@ -69,7 +69,7 @@ const Sidebar = () => {
                     <a href="#" className="nav-link px-0">
                       {" "}
                       <span className="d-none d-sm-inline text-white">
-                        Topics
+                        <i class="fas fa-tag"></i> &nbsp;Topics
                       </span>
                     </a>
                   </li>
@@ -77,7 +77,7 @@ const Sidebar = () => {
                     <a href="#" className="nav-link px-0">
                       {" "}
                       <span className="d-none d-sm-inline text-white">
-                        Sectors
+                        <i class="fas fa-hotel"></i> &nbsp;Sectors
                       </span>
                     </a>
                   </li>
@@ -85,7 +85,7 @@ const Sidebar = () => {
                     <a href="#" className="nav-link px-0">
                       {" "}
                       <span className="d-none d-sm-inline text-white">
-                        Regions
+                        <i class="fas fa-globe"></i> &nbsp;Regions
                       </span>
                     </a>
                   </li>
