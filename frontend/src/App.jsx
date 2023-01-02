@@ -20,6 +20,7 @@ import RadarChart from "./components/RadarChart/RadarChart";
 import PieChart from "./components/PieChart/PieChart";
 import LineChart from "./components/LineChart/LineChart";
 import DonutChart from "./components/DonutChart/DonutChart";
+import PolarChart from "./components/PolarChart/PolarChart";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -190,6 +191,9 @@ function App() {
         intensity={intensity}
         likelihood={likelihood}
       />
+      <br />
+      <br />
+      <PolarChart />
       <br />
       <br />
       <ScatterChart
