@@ -15,9 +15,6 @@ import {
   Legend,
   ArcElement,
 } from "chart.js";
-//import BubbleChart from "./../BubbleChart/BubbleChart";
-import BubbleChart from "../GoogleChart/BubbleChart/BubbleChart";
-import ScatterChart from "./../ScatterChart/ScatterChart";
 import RadarChart from "./../RadarChart/RadarChart";
 import PieChart from "./../PieChart/PieChart";
 import LineChart from "./../LineChart/LineChart";
