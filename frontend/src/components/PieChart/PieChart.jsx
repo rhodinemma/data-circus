@@ -29,7 +29,13 @@ const PieChart = (props) => {
       },
     ],
   };
-  return <Pie data={pieData} />;
+  return (
+    <>
+      <div className="col-md-6">
+        <Pie data={pieData} />
+      </div>
+    </>
+  );
 };
 
 export default PieChart;

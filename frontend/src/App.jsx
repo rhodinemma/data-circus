@@ -176,34 +176,44 @@ function App() {
 
   return (
     <>
-      <LineChart pestle={pestle} intensity={intensity} />
-      <br />
-      <br />
-      <PieChart country={country} relevance={relevance} />
-      <br />
-      <br />
-      <RadarChart topic={topic} intensity={intensity} />
-      <br />
-      <br />
-      <DonutChart
-        topic={topic}
-        relevance={relevance}
-        intensity={intensity}
-        likelihood={likelihood}
-      />
-      <br />
-      <br />
-      <PolarChart />
-      <br />
-      <br />
-      <ScatterChart
-        relevance={relevance}
-        intensity={intensity}
-        likelihood={likelihood}
-      />
-      <br />
-      <br />
-      <BubbleChart />
+      <div className="container">
+        <h1>Data Visualization Project</h1>
+        <br />
+        <br />
+
+        <div className="row">
+          <div className="col-lg-12">
+            <LineChart pestle={pestle} intensity={intensity} />
+          </div>
+        </div>
+        <div>
+          <PieChart country={country} relevance={relevance} />
+        </div>
+        <br />
+        <br />
+        <RadarChart topic={topic} intensity={intensity} />
+        <br />
+        <br />
+        <DonutChart
+          topic={topic}
+          relevance={relevance}
+          intensity={intensity}
+          likelihood={likelihood}
+        />
+        <br />
+        <br />
+        <PolarChart />
+        <br />
+        <br />
+        <ScatterChart
+          relevance={relevance}
+          intensity={intensity}
+          likelihood={likelihood}
+        />
+        <br />
+        <br />
+        <BubbleChart />
+      </div>
     </>
   );
 }

@@ -7,10 +7,10 @@ const LineChart = (props) => {
     responsive: true,
     plugins: {
       legend: {
-        position: "top",
+        position: "bottom",
       },
       title: {
-        display: true,
+        display: false,
         text: "Chart.js Line Chart",
       },
     },
@@ -30,7 +30,18 @@ const LineChart = (props) => {
       },
     ],
   };
-  return <Line options={options} data={data} />;
+  return (
+    <>
+      <div className="col card p-3 border border-5">
+        <div className="row">
+          <h1>Statistics</h1>
+        </div>
+        <div className="row">
+          <Line options={options} data={data} />
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default LineChart;
