@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 
-const DonutChart = ({ topic, relevance, intensity, likelihood }) => {
+const DonutChart = ({ sector, relevance, intensity, likelihood }) => {
   const [filter, setFilter] = useState("");
   const options = {
     responsive: true,
     plugins: {
       legend: {
-        position: "bottom",
+        position: "right",
       },
       title: {
         display: false,
@@ -16,10 +16,10 @@ const DonutChart = ({ topic, relevance, intensity, likelihood }) => {
     },
   };
   const data = {
-    labels: topic,
+    labels: sector,
     datasets: [
       {
-        label: "Topics",
+        label: "Sectors",
         data:
           filter === "intensity"
             ? intensity
@@ -54,12 +54,12 @@ const DonutChart = ({ topic, relevance, intensity, likelihood }) => {
           <div className="d-flex justify-content-between">
             <h1>
               {filter === "intensity"
-                ? "Country[intensity]"
+                ? "Sector[intensity]"
                 : filter === "relevance"
-                ? "Country[relevance]"
+                ? "Sector[relevance]"
                 : filter === "likelihood"
-                ? "Country[likelihood]"
-                : "Countries"}
+                ? "Sector[likelihood]"
+                : "Sectors"}
             </h1>
             <select
               className="btn btn-outline-dark"

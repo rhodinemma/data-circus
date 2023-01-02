@@ -168,6 +168,10 @@ function App() {
 
   filterOnTopics();
 
+  console.log(sector);
+  console.log(region);
+  console.log(pestle);
+
   return (
     <>
       {loading ? (
@@ -226,13 +230,18 @@ function App() {
             <div className="col-12 mb-5">
               <div className="row mx-1">
                 <DonutChart
-                  topic={topic}
+                  sector={sector}
                   relevance={relevance}
                   intensity={intensity}
                   likelihood={likelihood}
                 />
 
-                <PolarChart />
+                <PolarChart
+                  region={region}
+                  intensity={intensity}
+                  relevance={relevance}
+                  likelihood={likelihood}
+                />
               </div>
             </div>
 
