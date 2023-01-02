@@ -15,7 +15,18 @@ const RadarChart = (props) => {
       },
     ],
   };
-  return <Radar data={radarData} />;
+  return (
+    <>
+      <div className="col card p-3 border border-5">
+        <div className="row">
+          <h1>Radar Chart</h1>
+        </div>
+        <div className="col-lg-6">
+          <Radar data={radarData} />
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default RadarChart;

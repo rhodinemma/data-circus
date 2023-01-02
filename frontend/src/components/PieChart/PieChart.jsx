@@ -31,8 +31,13 @@ const PieChart = (props) => {
   };
   return (
     <>
-      <div className="col-md-6">
-        <Pie data={pieData} />
+      <div className="col card p-3 border border-5">
+        <div className="row">
+          <h1>Pie Chart</h1>
+        </div>
+        <div className="col-lg-6">
+          <Pie data={pieData} />
+        </div>
       </div>
     </>
   );

@@ -9,6 +9,16 @@ const BubbleChart = () => {
         beginAtZero: true,
       },
     },
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "bottom",
+      },
+      title: {
+        display: false,
+        text: "Chart.js Line Chart",
+      },
+    },
   };
 
   const bubbleData = {
@@ -33,7 +43,18 @@ const BubbleChart = () => {
       },
     ],
   };
-  return <Bubble options={bubbleOptions} data={bubbleData} />;
+  return (
+    <>
+      <div className="col card p-3 border border-5">
+        <div className="row">
+          <h1>Bubble Chart</h1>
+        </div>
+        <div className="row">
+          <Bubble options={bubbleOptions} data={bubbleData} />
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default BubbleChart;

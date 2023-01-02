@@ -181,19 +181,26 @@ function App() {
         <br />
         <br />
 
-        <div className="row">
+        <div className="row mb-5">
           <div className="col-lg-12">
             <LineChart pestle={pestle} intensity={intensity} />
           </div>
         </div>
-        <div>
-          <PieChart country={country} relevance={relevance} />
+
+        <div className="col-12 mb-5">
+          <div className="row mx-1">
+            <PieChart country={country} relevance={relevance} />
+
+            <RadarChart topic={topic} intensity={intensity} />
+          </div>
         </div>
-        <br />
-        <br />
-        <RadarChart topic={topic} intensity={intensity} />
-        <br />
-        <br />
+
+        <div className="row mb-5">
+          <div className="col-lg-12">
+            <BubbleChart />
+          </div>
+        </div>
+
         <DonutChart
           topic={topic}
           relevance={relevance}
@@ -210,9 +217,6 @@ function App() {
           intensity={intensity}
           likelihood={likelihood}
         />
-        <br />
-        <br />
-        <BubbleChart />
       </div>
     </>
   );
