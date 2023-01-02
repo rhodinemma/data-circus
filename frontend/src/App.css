@@ -1,4 +1,5 @@
-#d3demo {
-    width: 100vw;
-    height: 50vh;
+@import url('https://fonts.googleapis.com/css2?family=Andika&display=swap');
+
+* {
+    font-family: 'Andika', sans-serif;
 }

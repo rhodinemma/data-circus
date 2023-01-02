@@ -14,11 +14,14 @@ import {
   Legend,
   ArcElement,
 } from "chart.js";
-import { Line } from "react-chartjs-2";
-import { Pie } from "react-chartjs-2";
-import { Radar } from "react-chartjs-2";
-import { Scatter } from "react-chartjs-2";
-import faker from "faker";
+import BubbleChart from "./components/BubbleChart/BubbleChart";
+import ScatterChart from "./components/ScatterChart/ScatterChart";
+import RadarChart from "./components/RadarChart/RadarChart";
+import PieChart from "./components/PieChart/PieChart";
+import LineChart from "./components/LineChart/LineChart";
+import DonutChart from "./components/DonutChart/DonutChart";
+import PolarChart from "./components/PolarChart/PolarChart";
+import Cards from "./components/Cards/Cards";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -162,129 +165,67 @@ function App() {
 
   filterOnTopics();
 
-  console.log(topic);
-  console.log(sector);
-  console.log(region);
-  console.log(pestle);
-  console.log(country);
-
-  console.log("*****************************");
-
-  console.log(intensity);
-  console.log(relevance);
-  console.log(likelihood);
-
-  console.log(topicFilter);
-
-  console.log("******LINE CHART*************");
-
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "top",
-      },
-      title: {
-        display: true,
-        text: "Chart.js Line Chart",
-      },
-    },
-  };
-
-  const labels = pestle;
-
-  const data = {
-    labels,
-    datasets: [
-      {
-        fill: true,
-        label: "Dataset 2",
-        data: intensity,
-        borderColor: "rgb(53, 162, 235)",
-        backgroundColor: "rgba(53, 162, 235, 0.5)",
-      },
-    ],
-  };
-
-  console.log("*******PIE CHART********");
-
-  const pieData = {
-    labels: country,
-    datasets: [
-      {
-        label: "# of Votes",
-        data: relevance,
-        backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(153, 102, 255, 0.2)",
-          "rgba(255, 159, 64, 0.2)",
-        ],
-        borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(153, 102, 255, 1)",
-          "rgba(255, 159, 64, 1)",
-        ],
-        borderWidth: 1,
-      },
-    ],
-  };
-
-  console.log("*******RADAR CHART*********");
-
-  const radarData = {
-    labels: topic,
-    datasets: [
-      {
-        label: "Topics",
-        data: intensity,
-        backgroundColor: "rgba(255, 99, 132, 0.2)",
-        borderColor: "rgba(255, 99, 132, 1)",
-        borderWidth: 1,
-      },
-    ],
-  };
-
-  console.log("*******SCATTER CHART*******");
-
-  const scatterOptions = {
-    scales: {
-      y: {
-        beginAtZero: true,
-      },
-    },
-  };
-
-  const scatterData = {
-    datasets: [
-      {
-        label: "A dataset",
-        data: Array.from({ length: 100 }, () => ({
-          x: faker.datatype.number({ min: -100, max: 100 }),
-          y: faker.datatype.number({ min: -100, max: 100 }),
-        })),
-        backgroundColor: "rgba(255, 99, 132, 1)",
-      },
-    ],
-  };
+  //console.log(topic);
+  // console.log(sector);
+  // console.log(region);
+  // console.log(pestle);
+  // console.log(country);
+  // console.log(intensity);
+  // console.log(relevance);
+  // console.log(likelihood);
+  // console.log(topicFilter);
 
   return (
     <>
-      <Line options={options} data={data} />
-      <br />
-      <br />
-      <Pie data={pieData} />
-      <br />
-      <br />
-      <Radar data={radarData} />
-      <br />
-      <br />
-      <Scatter options={scatterOptions} data={scatterData} />
+      <div className="container">
+        <h1>Data Visualization Project</h1>
+        <br />
+
+        <Cards sector={sector} country={country} region={region} />
+
+        <div className="row mb-5">
+          <div className="col-lg-12">
+            <LineChart pestle={pestle} intensity={intensity} />
+          </div>
+        </div>
+
+        <div className="col-12 mb-5">
+          <div className="row mx-1">
+            <PieChart country={country} relevance={relevance} />
+
+            <RadarChart topic={topic} intensity={intensity} />
+          </div>
+        </div>
+
+        <div className="row mb-5">
+          <div className="col-lg-12">
+            <BubbleChart />
+          </div>
+        </div>
+
+        <div className="col-12 mb-5">
+          <div className="row mx-1">
+            <DonutChart
+              topic={topic}
+              relevance={relevance}
+              intensity={intensity}
+              likelihood={likelihood}
+            />
+
+            <PolarChart />
+          </div>
+        </div>
+
+        <div className="row mb-5">
+          <div className="col-lg-12">
+            <ScatterChart
+              relevance={relevance}
+              intensity={intensity}
+              likelihood={likelihood}
+            />
+          </div>
+        </div>
+      </div>
     </>
   );
 }
