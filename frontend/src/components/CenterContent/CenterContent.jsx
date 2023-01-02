@@ -63,7 +63,9 @@ function App() {
   // function to handle async call to backend
   const fetchData = async () => {
     setLoading(true);
-    let response = await axios.get("http://localhost:5000/getAllData");
+    let response = await axios.get(
+      "https://data-circus.onrender.com/getAllData"
+    );
     setAllData(response.data.data);
     setLoading(false);
   };
