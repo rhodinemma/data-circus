@@ -21,6 +21,7 @@ import PieChart from "./components/PieChart/PieChart";
 import LineChart from "./components/LineChart/LineChart";
 import DonutChart from "./components/DonutChart/DonutChart";
 import PolarChart from "./components/PolarChart/PolarChart";
+import Cards from "./components/Cards/Cards";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -180,38 +181,7 @@ function App() {
         <h1>Data Visualization Project</h1>
         <br />
 
-        <div className="row row-cols-1 row-cols-md-3 g-4 mb-5">
-          <div className="col">
-            <div className="card h-100 bg-info">
-              <div className="card-body">
-                <h5 className="card-title">Sectors</h5>
-                <p className="card-text" style={{ fontSize: "4rem" }}>
-                  {sector.length}
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col">
-            <div className="card h-100 bg-warning">
-              <div className="card-body">
-                <h5 className="card-title">Regions</h5>
-                <p className="card-text" style={{ fontSize: "4rem" }}>
-                  {region.length}
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col">
-            <div className="card h-100 bg-success text-white">
-              <div className="card-body">
-                <h5 className="card-title">Countries</h5>
-                <p className="card-text" style={{ fontSize: "4rem" }}>
-                  {country.length}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Cards sector={sector} country={country} region={region} />
 
         <div className="row mb-5">
           <div className="col-lg-12">
