@@ -201,7 +201,12 @@ function App() {
 
             <div className="col-12 mb-5">
               <div className="row mx-1">
-                <PieChart country={country} relevance={relevance} />
+                <PieChart
+                  country={country}
+                  intensity={intensity}
+                  relevance={relevance}
+                  likelihood={likelihood}
+                />
 
                 <RadarChart
                   topic={topic}

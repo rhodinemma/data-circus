@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Pie } from "react-chartjs-2";
 
 const PieChart = (props) => {
-  const { country, relevance } = props;
+  const [filter, setFilter] = useState("");
+  const { country, relevance, intensity, likelihood } = props;
   const options = {
     responsive: true,
     plugins: {
       legend: {
-        position: "right",
+        position: "bottom",
       },
       title: {
         display: false,
@@ -20,7 +21,12 @@ const PieChart = (props) => {
     datasets: [
       {
         label: "# of Votes",
-        data: relevance,
+        data:
+          filter === "intensity"
+            ? intensity
+            : filter === "relevance"
+            ? relevance
+            : likelihood,
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
@@ -44,8 +50,27 @@ const PieChart = (props) => {
   return (
     <>
       <div className="col card p-3 border border-5">
-        <div className="row">
-          <h1>Pie Chart</h1>
+        <div className="row mb-2">
+          <div className="d-flex justify-content-between">
+            <h1>
+              {filter === "intensity"
+                ? "Country[intensity]"
+                : filter === "relevance"
+                ? "Country[relevance]"
+                : filter === "likelihood"
+                ? "Country[likelihood]"
+                : "Countries"}
+            </h1>
+            <select
+              className="btn btn-outline-dark"
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
+            >
+              <option value="intensity">Intensity</option>
+              <option value="relevance">Relevance</option>
+              <option value="likelihood">Likelihood</option>
+            </select>
+          </div>
         </div>
         <div>
           <Pie data={pieData} options={options} />
