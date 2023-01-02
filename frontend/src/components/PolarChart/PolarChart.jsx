@@ -20,7 +20,18 @@ const PolarChart = () => {
       },
     ],
   };
-  return <PolarArea data={data} />;
+  return (
+    <>
+      <div className="col card p-3 border border-5">
+        <div className="row">
+          <h1>Polar Chart</h1>
+        </div>
+        <div className="col-lg-6">
+          <PolarArea data={data} />
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default PolarChart;

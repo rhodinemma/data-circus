@@ -201,15 +201,19 @@ function App() {
           </div>
         </div>
 
-        <DonutChart
-          topic={topic}
-          relevance={relevance}
-          intensity={intensity}
-          likelihood={likelihood}
-        />
-        <br />
-        <br />
-        <PolarChart />
+        <div className="col-12 mb-5">
+          <div className="row mx-1">
+            <DonutChart
+              topic={topic}
+              relevance={relevance}
+              intensity={intensity}
+              likelihood={likelihood}
+            />
+
+            <PolarChart />
+          </div>
+        </div>
+
         <br />
         <br />
         <ScatterChart
