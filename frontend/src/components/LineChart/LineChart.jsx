@@ -33,8 +33,16 @@ const LineChart = (props) => {
   return (
     <>
       <div className="col card p-3 border border-5">
-        <div className="row">
-          <h1>Statistics</h1>
+        <div className="row mb-2">
+          <div className="d-flex justify-content-between">
+            <h1>Statistics</h1>
+            <select className="btn btn-outline-dark">
+              <option value="">Default</option>
+              <option value="">Intensity</option>
+              <option value="">Relevance</option>
+              <option value="">Likelihood</option>
+            </select>
+          </div>
         </div>
         <div className="row">
           <Line options={options} data={data} />
