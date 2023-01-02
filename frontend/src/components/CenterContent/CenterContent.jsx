@@ -41,6 +41,7 @@ ChartJS.register(
 function App() {
   // hook to save our data in state from database
   const [allData, setAllData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   // arrays to store filtered data
   var topic = [];
@@ -60,8 +61,10 @@ function App() {
 
   // function to handle async call to backend
   const fetchData = async () => {
+    setLoading(true);
     let response = await axios.get("http://localhost:5000/getAllData");
     setAllData(response.data.data);
+    setLoading(false);
   };
 
   // function to handle filtering data [topics, sector, region, pestle]
@@ -165,71 +168,93 @@ function App() {
 
   filterOnTopics();
 
-  //console.log(topic);
-  // console.log(sector);
-  // console.log(region);
-  // console.log(pestle);
-  // console.log(country);
-  // console.log(intensity);
-  // console.log(relevance);
-  // console.log(likelihood);
-  // console.log(topicFilter);
-
   return (
     <>
-     <div>
-      <div>
-         <div className="container">
-        <h1>Data Visualization Project</h1>
-        <br />
+      {loading ? (
+        <>
+          <center>
+            <div
+              className="spinner-border"
+              style={{ width: "6rem", height: "6rem" }}
+              role="status"
+            >
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </center>
+        </>
+      ) : (
+        <>
+          <div className="container" style={{ paddingLeft: "11rem" }}>
+            <h1>Data Visualization Project</h1>
+            <br />
 
-        <Cards sector={sector} country={country} region={region} />
+            <Cards sector={sector} country={country} region={region} />
 
-        <div className="row mb-5">
-          <div className="col-lg-12">
-            <LineChart pestle={pestle} intensity={intensity} />
+            <div className="row mb-5">
+              <div className="col-lg-12">
+                <LineChart
+                  pestle={pestle}
+                  intensity={intensity}
+                  relevance={relevance}
+                  likelihood={likelihood}
+                />
+              </div>
+            </div>
+
+            <div className="col-12 mb-5">
+              <div className="row mx-1">
+                <PieChart
+                  country={country}
+                  intensity={intensity}
+                  relevance={relevance}
+                  likelihood={likelihood}
+                />
+
+                <RadarChart
+                  topic={topic}
+                  intensity={intensity}
+                  relevance={relevance}
+                  likelihood={likelihood}
+                />
+              </div>
+            </div>
+
+            <div className="row mb-5">
+              <div className="col-lg-12">
+                <BubbleChart />
+              </div>
+            </div>
+
+            <div className="col-12 mb-5">
+              <div className="row mx-1">
+                <DonutChart
+                  sector={sector}
+                  relevance={relevance}
+                  intensity={intensity}
+                  likelihood={likelihood}
+                />
+
+                <PolarChart
+                  region={region}
+                  intensity={intensity}
+                  relevance={relevance}
+                  likelihood={likelihood}
+                />
+              </div>
+            </div>
+
+            <div className="row mb-5">
+              <div className="col-lg-12">
+                <ScatterChart
+                  relevance={relevance}
+                  intensity={intensity}
+                  likelihood={likelihood}
+                />
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div className="col-12 mb-5">
-          <div className="row mx-1">
-            <PieChart country={country} relevance={relevance} />
-
-            <RadarChart topic={topic} intensity={intensity} />
-          </div>
-        </div>
-
-        <div className="row mb-5">
-          <div className="col-lg-12">
-            <BubbleChart />
-          </div>
-        </div>
-
-        <div className="col-12 mb-5">
-          <div className="row mx-1">
-            <DonutChart
-              topic={topic}
-              relevance={relevance}
-              intensity={intensity}
-              likelihood={likelihood}
-            />
-
-            <PolarChart />
-          </div>
-        </div>
-
-        <div className="row mb-5">
-          <div className="col-lg-12">
-            <ScatterChart
-              relevance={relevance}
-              intensity={intensity}
-              likelihood={likelihood}
-            />
-          </div>
-        </div>
-      </div>
-      </div>
-     </div>
+        </>
+      )}
     </>
   );
 }
