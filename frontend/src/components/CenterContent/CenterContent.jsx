@@ -168,25 +168,23 @@ function App() {
 
   filterOnTopics();
 
-  console.log(sector);
-  console.log(region);
-  console.log(pestle);
-
   return (
     <>
       {loading ? (
         <>
-          <div
-            className="spinner-border"
-            style={{ width: "6rem", height: "6rem" }}
-            role="status"
-          >
-            <span className="visually-hidden">Loading...</span>
-          </div>
+          <center>
+            <div
+              className="spinner-border"
+              style={{ width: "6rem", height: "6rem" }}
+              role="status"
+            >
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </center>
         </>
       ) : (
         <>
-          <div className="container">
+          <div className="container" style={{ paddingLeft: "11rem" }}>
             <h1>Data Visualization Project</h1>
             <br />
 
